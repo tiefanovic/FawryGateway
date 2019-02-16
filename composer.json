@@ -1,0 +1,22 @@
+{
+    "name": "tiefanovic/module-fawrygateway",
+    "description": "Fawry Payment Gateway",
+    "license": "GPL-3.0",
+    "version" : "1.0.0",
+    "authors": [
+        {
+            "email": "tiefanovic.business@gmail.com",
+            "name": "Tiefanovic"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Tiefanovic\\FawryGateway\\": ""
+        }
+    }
+}

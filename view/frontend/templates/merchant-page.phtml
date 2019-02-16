@@ -1,0 +1,51 @@
+<?php
+// @codingStandardsIgnoreFile
+/** @var \fawrygateway\Fort\Block\Payment\Redirect $block */
+$form_data = $block->getFormData();
+$form_url = $block->getFormUrl();
+$returnUrl = $block->getReturnUrl();
+
+?>
+<div class="fawrygateway-checkout">
+    <?php
+    if( !$block->getOrderOk() )
+    {
+        ?>
+        <p><?php echo $block->getErrorMessage()?></p>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <a class="action primary continue" href="<?php /* @escapeNotVerified */ echo $block->getUrl() ?>"><span><?php /* @escapeNotVerified */ echo __('Continue Shopping') ?></span></a>
+            </div>
+        </div>
+    <?php
+    } else{
+    ?>
+        <div class="pf-iframe-background" id="div-pf-iframe">
+            <div class="pf-iframe-container">
+                <span class="pf-close-container">
+                    <i class="fa fa-times-circle pf-iframe-close" onclick="pfClosePopup()" style="display:none"></i>
+                </span>
+                <i class="fa fa-spinner fa-spin pf-iframe-spin"></i>
+                <div class="pf-iframe" id="pf_iframe_content"></div>
+            </div>
+        </div>
+        <form name="fawrygateway_payment_form" id="fawrygateway_payment_form" method="GET" action="<?php echo $form_url; ?>" style="display:none">
+            <!-- general parameters --> 
+            <input type="hidden" name="chargeRequest" value='<?php echo json_encode($form_data); ?>'>
+            <input type="hidden" name="successPageUrl" value='<?php echo $returnUrl; ?>'>
+            <input type="hidden" name="failerPageUrl" value='<?php echo $returnUrl; ?>'>
+
+        </form>
+    <input type="hidden" id="fawrygateway_cancel_url" value="<?php echo $block->getUrl('fawrygateway/payment/merchantPageCancel')?>"/>
+        <script type="text/javascript">
+            require(['jquery', 'Tiefanovic_FawryGateway/js/MerchantPage'],function($){
+                'use strict';
+                $(document).ready(function () {
+                    showMerchantPage();
+                });
+            });
+        </script>
+        <?php
+    }
+    ?>
+</div>

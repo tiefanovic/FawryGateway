@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Tiefanovic_FawryGateway::css/styles.css"/>
+    </head>
+    <body>
+        <referenceBlock name="minicart" remove="true"/>
+        <referenceContainer name="header.panel" remove="true"/>
+        <referenceBlock name="top.search" remove="true"/>
+        <referenceBlock name="catalog.compare.link" remove="true"/>
+        <referenceBlock name="catalog.topnav" remove="true"/>
+        <referenceContainer name="footer-container" remove="true"/>
+
+        <referenceContainer name="content">
+            <block class="Tiefanovic\FawryGateway\Block\Redirect" template="Tiefanovic_FawryGateway::redirect.phtml" cacheable="false" />
+        </referenceContainer>
+    </body>
+</page>

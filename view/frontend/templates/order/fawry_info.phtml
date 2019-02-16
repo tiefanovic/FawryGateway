@@ -1,0 +1,6 @@
+<?php if($block->isShown()): ?>
+<div class="fawry-date">
+    <span class="label"><?= __('Please Pay') .' '. $block->payableAmount() . ' ' . __('at Fawry Using Ref Num #') . $block->getRefNumber() . ' ' . __('before');?></span> 
+    <date><?= $block->getExpiryTime(); ?></date>
+</div>
+<?php endif; ?>

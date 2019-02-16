@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <payment>
+            <fawrygateway>
+                <model>Tiefanovic\FawryGateway\Model\Standard</model>
+                <active>1</active>
+                <title>Fawry Payment Gateway</title>
+                <order_status>pending_payment</order_status>
+                <payment_action>sale</payment_action>
+                <paymentmode>staging</paymentmode>
+                <merchant_code>9mEsFLFepNY=</merchant_code>
+                <security_key>5809319c1593473db2631df61d09b0e4</security_key>
+                <expiry_time>2</expiry_time>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </fawrygateway>
+        </payment>
+    </default>
+</config>

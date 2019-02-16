@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="payment" translate="label" type="text" sortOrder="300" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+
+            <group id="fawrygateway" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1"
+                   showInStore="1">
+                <label>Fawry Payment Gateway</label>
+                <field id="active" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Enable Plugin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Title</label>
+                </field>
+                <field id="order_status" showInDefault="1" showInStore="0" showInWebsite="1"  translate="label" type="select">
+                    <label>New Order Status</label>
+                    <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+                </field>
+                <field id="paymentmode" translate="label"  type="select" sortOrder="3" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Plugin Mode</label>
+                    <source_model>Tiefanovic\FawryGateway\Model\Config\Source\Modes</source_model>
+                </field>
+                <field id="merchant_code" translate="label"  type="text" sortOrder="5" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Merchant Code</label>
+                </field>
+                <field id="security_key" translate="label"  type="text" sortOrder="6" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Security Key</label>
+                </field>
+                <field id="expiry_time" translate="label"  type="text" sortOrder="7" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Expiry Time In Hours</label>
+                    <comment>Order will be pending payment for this amount of hours, after that Fawry will expire it</comment>
+                </field>
+                <field id="min_amount" translate="label"  type="text" sortOrder="7" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Minimum Amount</label>
+                </field>
+                <field id="max_amount" translate="label"  type="text" sortOrder="8" showInDefault="1" showInWebsite="1"
+                       showInStore="1">
+                    <label>Maximum Amount</label>
+                </field>
+                <field id="allowspecific" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="40" translate="label" type="allowspecific">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Payment\Model\Config\Source\Allspecificcountries</source_model>
+                </field>
+                <field id="specificcountry" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="50" translate="label" type="multiselect">
+                    <label>Payment from Applicable Countries</label>
+                    <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
+                    <can_be_empty>1</can_be_empty>
+                </field>
+                <field id="sort_order" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="60" translate="label" type="text">
+                    <label>Sort Order</label>
+                </field>
+                <field id="instructions" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="70" translate="label" type="textarea">
+                    <label>Instructions</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
