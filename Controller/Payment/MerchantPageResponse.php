@@ -17,10 +17,6 @@ class MerchantPageResponse extends Checkout
 
     public function execute()
     {
-        /*
-         * ?chargeResponse={"merchantRefNumber":"000002344","fawryRefNumber":"912969894","paymentMethod":"PAYATFAWRY"}
-         * { ["chargeResponse"]=> string(85) "{"merchantRefNumber":"000002411","fawryRefNumber":"913096889","paymentMethod":"CARD"}" } 
-         */
         $chargeResponse = json_decode($this->getRequest()->getParam('chargeResponse'));
         if($chargeResponse){
             $orderId = $chargeResponse->merchantRefNumber;

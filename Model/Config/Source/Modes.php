@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dell
- * Date: 26/01/2019
- * Time: 11:18 ص
- */
-
 namespace Tiefanovic\FawryGateway\Model\Config\Source;
 
 

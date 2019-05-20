@@ -1,13 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dell
- * Date: 27/01/2019
- * Time: 05:13 م
- */
-
 namespace Tiefanovic\FawryGateway\Model;
-
 
 use Magento\Checkout\Model\ConfigProviderInterface;
 use Magento\Framework\UrlInterface;

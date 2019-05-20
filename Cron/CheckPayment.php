@@ -34,9 +34,6 @@ class CheckPayment
             ['method']
         )->where('sop.method = ?', 'fawrygateway' );
       
-        $writer = new \Zend\Log\Writer\Stream(BP . '/var/log/cron.log');
-		$logger = new \Zend\Log\Logger();
-		$logger->addWriter($writer);
         if($orders->count()){
             foreach($orders as $order){
                   if($order->getRealOrderId()){

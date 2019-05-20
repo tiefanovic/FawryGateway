@@ -62,15 +62,7 @@ class Data extends  AbstractHelper {
      * @return array
      */
     public function getMerchantPageData(\Magento\Sales\Model\Order $order) {
-        /*
-         * https://atfawry.fawrystaging.com/ECommercePlugin/FawryPay.jsp+'?chargeRequest={ "language":"ar-eg",
-         "merchantCode":"is0N+YQzlE4=", "merchantRefNumber":"12333",
-         "customer":{ "name":"test user", "mobile":"0100739xxx", "email":"test@test.com", "customerProfileId":"8723871236" },
-         "order":{ "description":"test bill inq",
-         "expiry":"2", 
-         "orderItems":[ { "productSKU":"12222", "description":"Test Product", "price":"50", "quantity":"2", "width":"10", "height":"5", "length":"100", "weight":"1" } ] },
-         "signature":"243d69d005ba46943c5f8d590cf7f8ad6c02663a838ca5b7039c33e03ad10799"}&successPageUrl='successPageUrl'&failerPageUrl='failerPageUrl' 
-         */
+       
         $orderId = $order->getRealOrderId();
         $gatewayParams = array(
             'merchantCode'      => $this->getMerchantCode(),
@@ -235,18 +227,20 @@ class Data extends  AbstractHelper {
             array_push($allOrders, $subOrder);
         }
         // Add shipping and taxes
-        $allOrders[] = ['productSKU'    =>  'shippingamnt',
-                        'description'   =>  'Shipping Cost',
-                        'price'         =>  number_format((float) $order->getShippingAmount(), 2, '.', ''),
-                        'quantity'      =>  1,
-                        'weight'        =>  0
-                        ];
-        $allOrders[] = ['productSKU'    =>  'taxamnt',
-                        'description'   =>  'Tax Cost',
-                        'price'         =>  number_format((float) $order->getShippingTaxAmount(), 2, '.', ''),
-                        'quantity'      =>  1,
-                        'weight'        =>  0
-                        ];
+        $allOrders[] = [
+            'productSKU'    =>  'shippingamnt',
+            'description'   =>  'Shipping Cost',
+            'price'         =>  number_format((float) $order->getShippingAmount(), 2, '.', ''),
+            'quantity'      =>  1,
+            'weight'        =>  0
+            ];
+        $allOrders[] = [
+            'productSKU'    =>  'taxamnt',
+            'description'   =>  'Tax Cost',
+            'price'         =>  number_format((float) $order->getShippingTaxAmount(), 2, '.', ''),
+            'quantity'      =>  1,
+            'weight'        =>  0
+            ];
         return $allOrders;
     }
 }

@@ -1,10 +1,4 @@
 <?xml version="1.0"?>
-<!--
-/**
- * Copyright © 2015 Magento. All rights reserved.
- * See COPYING.txt for license details.
- */
--->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <!--Compatible with One Step Checkout by Mageplaza -->
@@ -22,7 +16,6 @@
                                                 <item name="payment" xsi:type="array">
                                                     <item name="children" xsi:type="array">
                                                         <item name="renders" xsi:type="array">
-                                                            <!-- merge payment method renders here -->
                                                             <item name="children" xsi:type="array">
                                                                 <item name="fawrygateway-payments" xsi:type="array">
                                                                     <item name="component" xsi:type="string">Tiefanovic_FawryGateway/js/view/payment/method-renderer</item>
