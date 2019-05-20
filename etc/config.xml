@@ -9,8 +9,8 @@
                 <order_status>pending_payment</order_status>
                 <payment_action>sale</payment_action>
                 <paymentmode>staging</paymentmode>
-                <merchant_code>9mEsFLFepNY=</merchant_code>
-                <security_key>5809319c1593473db2631df61d09b0e4</security_key>
+                <merchant_code></merchant_code>
+                <security_key></security_key>
                 <expiry_time>2</expiry_time>
                 <allowspecific>0</allowspecific>
                 <sort_order>1</sort_order>
