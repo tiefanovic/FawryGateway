@@ -39,22 +39,24 @@ class CheckPayment
                   if($order->getRealOrderId()){
                       $url = $this->fawryHelper->getStatusUrl() .'?merchantCode='.$this->fawryHelper->getMerchantCode().'&merchantRefNumber='.$order->getRealOrderId().'&signature='.$this->generateSig($order->getRealOrderId());
                       $response = file_get_contents($url);
-                      if($response = json_decode($response) && $response->statusCode == 200){
-                            switch($response->paymentStatus){
-                                case 'PAID':
-                                  $this->fawryHelper->processSuccessOrder($order, $response->referenceNumber);
-                                    break;
-                                case    'EXPIRED':
-                                case    'CANCELLED':
-                                case    'REFUNDED':
-                                    $this->fawryHelper->cancelOrder($order, 'Order ' . $response->merchantRefNumber . ' with ref number ' . $response->referenceNumber . ' and payment method ' . $response->paymentMethod .' was ' . $response->paymentStatus);
-                                    break;
-                                case    'FAILED':
-                                    $this->fawryHelper->orderFailed($order);
-                                    break;
+                      if($response = json_decode($response) && isset($response->statusCode)){
+                            if($response->statusCode == 200){
+                                switch($response->paymentStatus){
+                                    case 'PAID':
+                                    $this->fawryHelper->processSuccessOrder($order, $response->referenceNumber);
+                                        break;
+                                    case    'EXPIRED':
+                                    case    'CANCELLED':
+                                    case    'REFUNDED':
+                                        $this->fawryHelper->cancelOrder($order, 'Order ' . $response->merchantRefNumber . ' with ref number ' . $response->referenceNumber . ' and payment method ' . $response->paymentMethod .' was ' . $response->paymentStatus);
+                                        break;
+                                    case    'FAILED':
+                                        $this->fawryHelper->orderFailed($order);
+                                        break;
 
+                                }
                             }
-                      }
+                        }
                   }
             }
         }
