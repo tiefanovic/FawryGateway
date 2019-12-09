@@ -220,7 +220,7 @@ class Data extends  AbstractHelper {
             $subOrder = [
                 'productSKU'    =>  $item->getSku(),
                 'description'   =>  $item->getDescription(),
-                'price'         =>  number_format((float) $item->getPrice(), 2, '.', ''),
+                'price'         =>  number_format((float) $item->getPrice() - (float)$item->getBaseDiscountAmount(), 2, '.', ''),
                 'quantity'      =>  (int) $item->getQtyOrdered(),
                 'weight'        =>  number_format((float) $item->getProduct()->getWeight(), '2', '.', '')
             ];
