@@ -39,7 +39,7 @@ class CheckPayment
                   if($order->getRealOrderId()){
                       $url = $this->fawryHelper->getStatusUrl() .'?merchantCode='.$this->fawryHelper->getMerchantCode().'&merchantRefNumber='.$order->getRealOrderId().'&signature='.$this->generateSig($order->getRealOrderId());
                       $response = file_get_contents($url);
-                      if($response = json_decode($response) && isset($response->statusCode)){
+                      if(($response = json_decode($response)) && isset($response->statusCode)){
                             if($response->statusCode == 200){
                                 switch($response->paymentStatus){
                                     case 'PAID':
