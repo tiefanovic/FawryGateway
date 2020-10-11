@@ -5,7 +5,7 @@ Magento2 Integration for Egyptian Fawry payment gateway
 # Install
 - download package and unip it in ```` app/code/Tiefanovic/FawryGateway ````
 - Run the following commands
-- ```` bin/magento s:up ````
+- ```` bin/magento setup:upgrade ````
 - ```` bin/magento setup:di:compile ````
 - ```` bin/magento setup:static-content:deploy ````
 
