@@ -13,7 +13,7 @@ class CheckPayment
         FawryHelper $fawryHelper
     )
     {
-        $this->orderCollection = $orderCollectionFactory->create();
+        $this->orderCollection = $orderCollectionFactory;
         $this->fawryHelper = $fawryHelper;
     }
 
@@ -26,7 +26,7 @@ class CheckPayment
 	    * check Status
 	    * Update Order 
 	    */
-        $orders = $this->orderCollection->addFieldToSelect('*');
+        $orders = $this->orderCollection->create()->addFieldToSelect('*');
         $orders->addFieldToFilter('status', ['eq' => \Magento\Sales\Model\Order::STATE_PENDING_PAYMENT]);
         $orders->getSelect()->join(
             ["sop" => "sales_order_payment"],
