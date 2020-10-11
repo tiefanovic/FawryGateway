@@ -37,6 +37,10 @@ define(
 
                 var self = this;
                 var paymentData = quote.paymentMethod();
+                //delete title from paymentData if exist
+                paymentData = JSON.parse(JSON.stringify(paymentData));
+                delete paymentData['title'];
+                
                 var messageContainer = this.messageContainer;
                 fullScreenLoader.startLoader();
                 this.isPlaceOrderActionAllowed(false);
